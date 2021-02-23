@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>To Clip, or Not To Clip &#9642; c272</title>
+<!--
+<meta name="description" content="A collision dilemma, told through CS:GO.
+">
+-->
+<meta name="description" content="A collision dilemma, told through CS:GO.">
+<meta name="keywords" content="csgo, hammer">
+<link rel="canonical" href="http://localhost:4000/posts/to-clip-or-not-to-clip">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="To Clip, or Not To Clip" />
+<meta name="twitter:description" content="A collision dilemma, told through CS:GO.
+" />
+<meta name="twitter:image" content="http://localhost:4000" />
+<meta name="author" content="">
+<link rel="author" href="">
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="To Clip, or Not To Clip">
+<meta property="og:description" content="A collision dilemma, told through CS:GO.
+">
+<meta property="og:url" content="http://localhost:4000/posts/to-clip-or-not-to-clip">
+<meta property="og:site_name" content="c272">
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400italic,700,700italic">
+<style>
+    html {
+      font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+</style>
+<link rel="stylesheet" href="/assets/css/bf.css">
+   <body>
+       <div class="wrapper" id="blep">
+          <header>
+   <div class="menu">
+     <div class="logo">
+        <a href="/">c272</a>
+        <object type="image/svg+xml" data="/assets/img/coffeecup.svg" class="logosvg">Your browser does not support svg images</object>
+     </div>
+       <ul>
+           <li><a href="/about">about</a>
+           <li><a href="/archive">archive</a>
+       </ul>
+   </div>
+   <div class="social">
+     <ul>
+       <li>
+            <a href="https://github.com/c272" target="_blank" class="smaller">
+              <span class="icon-github"></span>
+            </a>
+       <li>
+            <a href="mailto:larry@c272.org" target="_blank">
+              <span class="icon-mail_outline"></span>
+            </a>
+       <li>
+            <a href="/feed.xml" target="_blank">
+                <span class="icon-rss_feed"></span>
+            </a>
+       <li>
+            <a href="#" onclick="switchTheme()" title="Switch theme?">
+              <span class="icon-invert_colors" id="theme-switcher"></span>
+            </a>
+     </ul>
+   </div>
+</header>
+<article class="post">
+<style>
+  .to-clip-or-not-to-clip {
+    margin-bottom: 2em;
+  }
+  .to-clip-or-not-to-clip::before {
+    background-image: url('/uploads/csgo_smoothstairs.gif');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .to-clip-or-not-to-clip::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(200,0,0,0.8);
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+  .to-clip-or-not-to-clip-container,
+  .to-clip-or-not-to-clip-container::before,
+  .to-clip-or-not-to-clip-container::after {
+    height: 25rem;
+  }
+  .to-clip-or-not-to-clip-bleed-container,
+  .to-clip-or-not-to-clip-bleed-container::before,
+  .to-clip-or-not-to-clip-bleed-container::after {
+    height: 35rem;
+  }
+    @media (max-width: 48rem) {
+        .to-clip-or-not-to-clip-container,
+        .to-clip-or-not-to-clip-container::before,
+        .to-clip-or-not-to-clip-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+ <div class="post-title-container
+  to-clip-or-not-to-clip to-clip-or-not-to-clip-bleed-container bleed-hero-container
+    ">
+    <!--Post hero image source-->
+   <div class="heading-container hero-heading hero-heading-post">
+     <h1>
+          To Clip, or Not To Clip
+     </h1>
+     <div class="post-meta">
+        <span>16/06/2018</span>
+        <span>
+              <a href="/tag/csgo">#csgo</a>
+              <a href="/tag/hammer">#hammer</a>
+        </span>
+     </div>
+   </div>
+ </div>
+   <p>We all have the same issue; Should I clip all my props? Won’t it make players annoyed and cause frustration when something that looks like it should be wallbang enabled/walkable is not?
+<p>The answer to the first: Yes.
+The answer to the second: Yes.
+<p>There’s a compromise to be made here, one that a lot of mappers struggle to find a balance between. For a great example, look at Valve’s maps, especially fine polished ones such as Dust2. These take a more balanced approach to clipping, as well as employing some clever techniques to make the clipping as smooth and unnoticeable for the player as possible, such as at the stairs leading to B.
+<p><img src="/uploads/csgo_smoothstairs.gif" alt="img" />
+<p>This isn’t without it’s issues, obviously, so don’t take these to be the holy grail of proper clipping, as you can still get stuck at specific points on the map, but it’s a good general practice to follow. The two easy ones are as follows:
+<ul>
+ <li>Clip areas that need to be smoothed out.
+ <li>Clip areas where the bomb could get stuck, such as in small corners or areas behind crates.
+</ul>
+<p>However, a more contentious example would perhaps be the idea of:
+<ul>
+ <li>Clip areas that the player isn’t meant to reach.
+</ul>
+<p>You may think that this is extremely simple, but in reality it can be a major sticking point for players. The reasoning behind this is, as mentioned before, if it <strong>looks</strong> like you should be able to go to an area, at least one player will attempt it. This is something more prominent map makers have had trouble with too, 3kliksphilip more recently having issues with this in his “de_sparity” map, in which a platform looked like it should have been accessible, which eventually marked down his map. <a href="https://www.youtube.com/watch?v=Up3f8ePGcLw&amp;t=626s">How unfortunate.</a>
+<p>It’s even present on Valve’s own map, Canals, in which a knee high fence prevents you from walking further, seen in the below image.
+<p><img src="/uploads/csgo_canals_ss.jpg" alt="img" />
+<p>Fixing this is more difficult on different maps, such as situations where you can’t just stick in a massive wall, which I’m assuming was the reason for de_canals’ suspiciously absent barriers.
+<p>To conclude, you <em>should</em> clip everything to keep the gameplay smooth for the player, and avoid exploits such as boosting and bomb stuck spots, but only when it makes sense for your map. Don’t go adding a clipping wall over a 32 unit high box. It’s all really common stuff, but it takes a lot of work to get right, as evident in the Valve maps that have been worked on for years on end that still aren’t perfect.
+<p>Happy clipping.
+</article>
+<aside class="related">
+<h2>Related posts</h2>
+<ul class="related-posts">
+</aside>
+           <footer>
+    <span>A blog for weird and wonderful programming topics,</span>
+    <span>written by C272</span>
+</footer>
+       </div>
+<script type="text/javascript" src="/assets/js/theme.js"></script>
+<script type="text/javascript" src="/assets/js/barefoot.js"></script>
+    
