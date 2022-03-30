@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.0"
-gem "rouge", "~> 1.0"
+gem "jekyll", "~> 4.0"
+gem "rouge", "~> 3.0"
 
 group :jekyll_plugins do
   gem "jekyll-feed"
@@ -9,3 +9,5 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "kramdown-parser-gfm"
 end
+
+gem "webrick", "~> 1.7"

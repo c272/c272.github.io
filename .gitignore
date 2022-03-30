@@ -6,4 +6,5 @@
 
 # Temporary files
 .sass-cache/
+.jekyll-cache/
 .jekyll-metadata

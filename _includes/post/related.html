@@ -36,6 +36,12 @@
 
   {% endfor %}
 
+{% if maxRelatedCounter == 0 %}
+
+<p>There are no posts related to this one yet. Check back later!</p>
+
+{% endif %}
+
 </aside>
 
 {% comment %}

@@ -7,6 +7,10 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   margin-bottom: 4em; // visible under post only
+
+  p {
+    color: var(--text-color-light)
+  }
 }
 
 // <ul> style for Archive and in 'Related' under posts
