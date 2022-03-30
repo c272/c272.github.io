@@ -61,7 +61,7 @@ First, you'll need to compile your `.fx` shader using *2MGFX*, a free tool inclu
 
 > Note: Make sure you're compiling for the correct platform, either DesktopGL or DirectX_11, otherwise your shader will not compile properly, or fail to load.
 
-Once this is done, you can include the compiled file as a resource in your assembly, as is done so [here,]([https://stackoverflow.com/questions/433171/how-to-embed-a-text-file-in-a-net-assembly](https://stackoverflow.com/questions/433171/how-to-embed-a-text-file-in-a-net-assembly)) and then load the effect from raw bytes, like so:
+Once this is done, you can include the compiled file as a resource in your assembly, as is done so [here,](https://stackoverflow.com/questions/433171/how-to-embed-a-text-file-in-a-net-assembly) and then load the effect from raw bytes, like so:
 
 ```cs
 Effect myEffect = new Effect(SadConsole.Global.GraphicsDevice, Resources.MyEffect);
@@ -85,7 +85,7 @@ DrawOrder = 6;
 myShader = new Effect(SadConsole.Global.GraphicsDevice, Resources.MyShader);
 ```
 
-With the `DrawOrder` properly set, all that's left to do is configure the shader's parameters, and then include the `Draw` code. The first step is done on a shader-by-shader basis, however this is what the code looks like in the [SadConsole Shader Example]([https://github.com/SadConsole/SadConsole/blob/master/src/DemoProject/SharedCode/ShaderRendererTesting.cs](https://github.com/SadConsole/SadConsole/blob/master/src/DemoProject/SharedCode/ShaderRendererTesting.cs)):
+With the `DrawOrder` properly set, all that's left to do is configure the shader's parameters, and then include the `Draw` code. The first step is done on a shader-by-shader basis, however this is what the code looks like in the [SadConsole Shader Example](https://github.com/SadConsole/SadConsole/blob/master/src/DemoProject/SharedCode/ShaderRendererTesting.cs):
 
 ```cs
 public override void Draw(GameTime gameTime)

@@ -2,5 +2,5 @@
 slug: csgo
 name: CS:GO
 description: >
-  The hit first person shooter, which has fully featured map creation tools.
+  Posts mentioning the hit first person shooter from Valve, which ships with a full suite of map creation tools.
 ---
