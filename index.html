@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>c272 </title>
+<!---->
+
+
+<meta name="description" content="A blog for weird and wonderful programming topics,">
+
+<link rel="canonical" href="https://c272.org/">
+<link rel="shortcut icon" type="image/icon" href="/favicon.ico">
+
+
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Blog" />
+<meta name="twitter:description" content="A blog for weird and wonderful programming topics," />
+<meta name="twitter:image" content="https://c272.org" />
+
+<!-- Google plus -->
+<meta name="author" content="">
+<link rel="author" href="">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blog">
+<meta property="og:description" content="A blog for weird and wonderful programming topics,">
+<meta property="og:url" content="https://c272.org/">
+<meta property="og:site_name" content="c272">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400italic,700,700italic">
+<style>
+    html {
+      font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/bf.css">
+
+
+    </head>
+
+    <body>
+        <div class="wrapper" id="blep">
+            <header>
+    <div class="menu">
+      <div class="logo">
+
+        <a href="/">c272</a>
+        <object type="image/svg+xml" data="/assets/img/coffeecup.svg" class="logosvg">Your browser does not support svg images</object>
+      </div>
+
+        <ul>
+            <li><a href="/about">about</a></li>
+            <li><a href="/archive">archive</a></li>
+        </ul>
+    </div>
+    <div class="social">
+      <ul>
+        
+        
+        
+        
+        <li>
+            <a href="https://github.com/c272" target="_blank" class="smaller">
+              <span class="icon-github"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="mailto:larry@c272.org" target="_blank">
+              <span class="icon-mail_outline"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="/feed.xml" target="_blank">
+                <span class="icon-rss_feed"></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#" onclick="switchTheme()" title="Switch theme?">
+              <span class="icon-invert_colors" id="theme-switcher"></span>
+            </a>
+        </li>
+      </ul>
+    </div>
+</header>
+
+
+            
+
+
+
+<article class="blog">
+
+
+  
+    
+
+
+
+
+
+
+
+
+<style>
+  .postprocessing-in-sadconsole {
+    margin-bottom: 2em;
+  }
+  .postprocessing-in-sadconsole::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .postprocessing-in-sadconsole::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(100,255,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .postprocessing-in-sadconsole-container,
+  .postprocessing-in-sadconsole-container::before,
+  .postprocessing-in-sadconsole-container::after {
+    height: 25rem;
+  }
+
+  .postprocessing-in-sadconsole-bleed-container,
+  .postprocessing-in-sadconsole-bleed-container::before,
+  .postprocessing-in-sadconsole-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .postprocessing-in-sadconsole-container,
+        .postprocessing-in-sadconsole-container::before,
+        .postprocessing-in-sadconsole-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="
+  
+    post-title-container
+      
+        postprocessing-in-sadconsole postprocessing-in-sadconsole-container hero-hov
+      
+    
+  ">
+
+    <!-- Post title -->
+  
+    <div class="heading-container hero-heading hero-heading-blog">
+  
+      <h1>
+        
+          <a href="/posts/postprocessing-in-sadconsole" title="Postprocessing in SadConsole">Postprocessing in SadConsole</a>
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="
+      
+        post-meta
+      
+      ">
+
+        <span>27/02/2021</span>
+
+        
+
+        <span>
+          
+              <a href="/tag/csharp">#csharp</a>
+          
+        </span>
+      </div>
+
+    
+    </div>
+    
+
+  </div>
+
+  
+
+    
+      <p class="notice">This was originally an article I wrote for the SadConsole wiki in 2019, which I have moved over to this blog. You can find (and use) SadConsole <a href="https://github.com/Thraka/SadConsole">here.</a></p>
+
+<p>Sometimes you may want to apply a shader or graphical effect to your game when drawing, which this article will explain how to do.</p>
+
+<p>To apply a post processing effect to the screen, you can override SadConsole’s default drawing functionality, and then apply your own custom draw commands.</p>
+
+<p>To do this, you attach a new <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> to SadConsole’s game instance components, which is set to draw <em>after</em> SadConsole has finished creating the frame for the default screen.</p>
+
+<p>This <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> should then access SadConsole’s final render surface, and apply whatever custom draw code is needed.</p>
+
+<h2 id="method">Method</h2>
+
+<h3 id="setting-up-the-class">Setting up the Class</h3>
+<p>To begin with, you’ll need to create a new class that inherits from MonoGame’s <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code>, and override the constructor and “Draw” functions so that you can draw to screen.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">public</span> <span class="k">class</span> <span class="nc">MyCustomPPFX</span> <span class="p">:</span> <span class="n">DrawableGameComponent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MyCustomPPFX</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Game</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+    <span class="c1">//When we need to draw to the screen, it's done here.</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Draw</span><span class="p">(</span><span class="n">GameTime</span> <span class="n">gameTime</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>After this, you’ll need to have your constructor load in the shader you want to use. This can be done through two methods:</p>
+
+<ol>
+  <li>The MonoGame Content Pipeline</li>
+  <li>2MGFX (Manual Inclusion)</li>
+</ol>
+
+<p>The MonoGame Content Pipeline is arguably easier, however requires you to have the pipeline available for changes.</p>
+
+<h3 id="loading-a-shader">Loading a Shader</h3>
+<p><em>Method 1: MonoGame Content Pipeline</em>
+To load your content via. the MonoGame Content Pipeline, you can create a simple <code class="language-plaintext highlighter-rouge">.mgcb</code> and include the shader as a file. Once this is done, you can set up a content manager and load the shader like so:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">effect</span> <span class="p">=</span> <span class="n">Content</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">Effect</span><span class="p">&gt;</span> <span class="p">(</span><span class="s">"myEffect"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><em>Method 2: 2MGFX and Manual Inclusion</em>
+First, you’ll need to compile your <code class="language-plaintext highlighter-rouge">.fx</code> shader using <em>2MGFX</em>, a free tool included in every MonoGame install. The default location for this is in the MonoGame MSBuild folder, located at <code class="language-plaintext highlighter-rouge">Program Files (x86)\MSBuild\MonoGame\Tools</code>.</p>
+
+<blockquote>
+  <p>Note: Make sure you’re compiling for the correct platform, either DesktopGL or DirectX_11, otherwise your shader will not compile properly, or fail to load.</p>
+</blockquote>
+
+<p>Once this is done, you can include the compiled file as a resource in your assembly, as is done so <a href="https://stackoverflow.com/questions/433171/how-to-embed-a-text-file-in-a-net-assembly">here,</a> and then load the effect from raw bytes, like so:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">Effect</span> <span class="n">myEffect</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyEffect</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="configuring-the-class">Configuring the Class</h3>
+<p>Once you’ve successfully loaded the shader in your constructor, it should look something like this:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1">//Load the shader into memory.</span>
+<span class="n">myShader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyShader</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Now you need to set the draw order of your <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> to be <strong>6 or higher</strong>, so it draws <em>after</em> SadConsole’s finished doing its rendering.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">//Set the draw order to 6, so we draw AFTER SadConsole.</span>
+<span class="n">DrawOrder</span> <span class="p">=</span> <span class="m">6</span><span class="p">;</span>
+
+<span class="c1">//Load the shader into memory.</span>
+<span class="n">myShader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyShader</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>With the <code class="language-plaintext highlighter-rouge">DrawOrder</code> properly set, all that’s left to do is configure the shader’s parameters, and then include the <code class="language-plaintext highlighter-rouge">Draw</code> code. The first step is done on a shader-by-shader basis, however this is what the code looks like in the <a href="https://github.com/SadConsole/SadConsole/blob/master/src/DemoProject/SharedCode/ShaderRendererTesting.cs">SadConsole Shader Example</a>:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Draw</span><span class="p">(</span><span class="n">GameTime</span> <span class="n">gameTime</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">// Respect the draw flag for sadconsole</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">Settings</span><span class="p">.</span><span class="n">DoDraw</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"textureSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"videoSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"outputSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You’ll need to configure any static values for your shader in your constructor after you’ve loaded it, as well. Finally, the <code class="language-plaintext highlighter-rouge">Draw</code> code. First you begin the rendering of the <code class="language-plaintext highlighter-rouge">SpriteBatch</code>, apply your shader, draw the spritebatch, and then end. Here’s an example of that, again from the example:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">Begin</span><span class="p">(</span><span class="n">SpriteSortMode</span><span class="p">.</span><span class="n">Immediate</span><span class="p">,</span> <span class="n">BlendState</span><span class="p">.</span><span class="n">NonPremultiplied</span><span class="p">,</span> <span class="n">SamplerState</span><span class="p">.</span><span class="n">PointClamp</span><span class="p">,</span> <span class="n">DepthStencilState</span><span class="p">.</span><span class="n">DepthRead</span><span class="p">,</span> <span class="n">RasterizerState</span><span class="p">.</span><span class="n">CullNone</span><span class="p">);</span>
+
+<span class="c1">//Apply the shader before draw, but after begin.</span>
+<span class="n">spriteEffect</span><span class="p">.</span><span class="n">CurrentTechnique</span><span class="p">.</span><span class="n">Passes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="nf">Apply</span><span class="p">();</span>
+
+<span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">Draw</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">White</span><span class="p">);</span>
+<span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">End</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="adding-the-component">Adding the Component</h3>
+
+<p>Now that your custom renderer is completely set up, you can add it as a component to the game instance. Somewhere in your SadConsole initialization code, you can add an instance of your class to the <code class="language-plaintext highlighter-rouge">SadConsole.Game.Instance.Components</code> collection.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">Game</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Components</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">MyCustomPPFX</span><span class="p">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Running the game, your shader should now be applied, permitting your parameters and configuration were correct.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>I’m just seeing a black screen, what should I do?</strong>
+Has the shader been applied between the <code class="language-plaintext highlighter-rouge">Begin</code> and <code class="language-plaintext highlighter-rouge">Draw</code> methods? Is the shader broken?</p>
+
+<p>Another possible issue is the parameters of the shader. Make sure any size or output parameters are set in the <code class="language-plaintext highlighter-rouge">Draw</code> function, and based on SadConsole’s actual dimensions. Also make sure that your static properties are configured properly.</p>
+
+        <div class="readmore">
+          <a href="/posts/postprocessing-in-sadconsole" role="button">Read more</a>
+        <div>
+
+    
+
+  
+
+
+</article>
+  <!-- Last post does not need a hr -->
+
+  <hr>
+
+
+
+
+
+
+
+<article class="blog">
+
+
+  
+    
+
+
+
+
+
+
+
+
+<style>
+  .to-clip-or-not-to-clip {
+    margin-bottom: 2em;
+  }
+  .to-clip-or-not-to-clip::before {
+    background-image: url('/uploads/csgo_smoothstairs.gif');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .to-clip-or-not-to-clip::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(200,0,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .to-clip-or-not-to-clip-container,
+  .to-clip-or-not-to-clip-container::before,
+  .to-clip-or-not-to-clip-container::after {
+    height: 25rem;
+  }
+
+  .to-clip-or-not-to-clip-bleed-container,
+  .to-clip-or-not-to-clip-bleed-container::before,
+  .to-clip-or-not-to-clip-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .to-clip-or-not-to-clip-container,
+        .to-clip-or-not-to-clip-container::before,
+        .to-clip-or-not-to-clip-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="
+  
+    post-title-container
+      
+        to-clip-or-not-to-clip to-clip-or-not-to-clip-container hero-hov
+      
+    
+  ">
+
+    <!-- Post title -->
+  
+    <div class="heading-container hero-heading hero-heading-blog">
+  
+      <h1>
+        
+          <a href="/posts/to-clip-or-not-to-clip" title="To Clip, or Not To Clip">To Clip, or Not To Clip</a>
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="
+      
+        post-meta
+      
+      ">
+
+        <span>16/06/2018</span>
+
+        
+
+        <span>
+          
+              <a href="/tag/csgo">#csgo</a>
+          
+              <a href="/tag/hammer">#hammer</a>
+          
+        </span>
+      </div>
+
+    
+    </div>
+    
+
+  </div>
+
+  
+
+    
+      <p>We all have the same issue; Should I clip all my props? Won’t it make players annoyed and cause frustration when something that looks like it should be wallbang enabled/walkable is not?</p>
+
+<p>The answer to the first: Yes.
+The answer to the second: Yes.</p>
+
+<p>There’s a compromise to be made here, one that a lot of mappers struggle to find a balance between. For a great example, look at Valve’s maps, especially fine polished ones such as Dust2. These take a more balanced approach to clipping, as well as employing some clever techniques to make the clipping as smooth and unnoticeable for the player as possible, such as at the stairs leading to B.</p>
+
+<p><img src="/uploads/csgo_smoothstairs.gif" alt="img" /></p>
+
+<p>This isn’t without it’s issues, obviously, so don’t take these to be the holy grail of proper clipping, as you can still get stuck at specific points on the map, but it’s a good general practice to follow. The two easy ones are as follows:</p>
+
+<ul>
+  <li>Clip areas that need to be smoothed out.</li>
+  <li>Clip areas where the bomb could get stuck, such as in small corners or areas behind crates.</li>
+</ul>
+
+<p>However, a more contentious example would perhaps be the idea of:</p>
+
+<ul>
+  <li>Clip areas that the player isn’t meant to reach.</li>
+</ul>
+
+<p>You may think that this is extremely simple, but in reality it can be a major sticking point for players. The reasoning behind this is, as mentioned before, if it <strong>looks</strong> like you should be able to go to an area, at least one player will attempt it. This is something more prominent map makers have had trouble with too, 3kliksphilip more recently having issues with this in his “de_sparity” map, in which a platform looked like it should have been accessible, which eventually marked down his map. <a href="https://www.youtube.com/watch?v=Up3f8ePGcLw&amp;t=626s">How unfortunate.</a></p>
+
+<p>It’s even present on Valve’s own map, Canals, in which a knee high fence prevents you from walking further, seen in the below image.</p>
+
+<p><img src="/uploads/csgo_canals_ss.jpg" alt="img" /></p>
+
+<p>Fixing this is more difficult on different maps, such as situations where you can’t just stick in a massive wall, which I’m assuming was the reason for de_canals’ suspiciously absent barriers.</p>
+
+<p>To conclude, you <em>should</em> clip everything to keep the gameplay smooth for the player, and avoid exploits such as boosting and bomb stuck spots, but only when it makes sense for your map. Don’t go adding a clipping wall over a 32 unit high box. It’s all really common stuff, but it takes a lot of work to get right, as evident in the Valve maps that have been worked on for years on end that still aren’t perfect.</p>
+
+<p>Happy clipping.</p>
+
+        <div class="readmore">
+          <a href="/posts/to-clip-or-not-to-clip" role="button">Read more</a>
+        <div>
+
+    
+
+  
+
+
+</article>
+  <!-- Last post does not need a hr -->
+
+  <hr>
+
+
+
+
+
+
+
+<article class="blog">
+
+
+  
+    
+
+
+
+
+
+
+
+
+<style>
+  .eight-bools-in-a-byte {
+    margin-bottom: 2em;
+  }
+  .eight-bools-in-a-byte::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .eight-bools-in-a-byte::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(255,100,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .eight-bools-in-a-byte-container,
+  .eight-bools-in-a-byte-container::before,
+  .eight-bools-in-a-byte-container::after {
+    height: 25rem;
+  }
+
+  .eight-bools-in-a-byte-bleed-container,
+  .eight-bools-in-a-byte-bleed-container::before,
+  .eight-bools-in-a-byte-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .eight-bools-in-a-byte-container,
+        .eight-bools-in-a-byte-container::before,
+        .eight-bools-in-a-byte-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="
+  
+    post-title-container
+      
+        eight-bools-in-a-byte eight-bools-in-a-byte-container hero-hov
+      
+    
+  ">
+
+    <!-- Post title -->
+  
+    <div class="heading-container hero-heading hero-heading-blog">
+  
+      <h1>
+        
+          <a href="/posts/eight-bools-in-a-byte" title="8 Bools in a Byte">8 Bools in a Byte</a>
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="
+      
+        post-meta
+      
+      ">
+
+        <span>12/06/2018</span>
+
+        
+
+        <span>
+          
+              <a href="/tag/cpp">#cpp</a>
+          
+        </span>
+      </div>
+
+    
+    </div>
+    
+
+  </div>
+
+  
+
+    
+      <p>Storing booleans is an odd topic for the programming world, specifcally for storage. Typically, the smallest addressable chunk of memory is a byte, or 8 bits. The boolean type, having two states, requires just a single bit. This causes the following dilemma: If I want to store 8 bools, why am I using 8 bytes? That’s 64 bits, 56 more than I actually need to store that amount.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">//What a waste of storage!</span>
+<span class="kt">bool</span> <span class="n">option1</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option2</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option3</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option4</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option5</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option6</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option7</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option8</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>C++, thankfully, has a way to fix this issue. Namely, through using 1 byte, with each individual bit in said byte being a boolean on it’s own. There are two methods to do this, one being much easier than the other, but I’ll explain both so that it becomes obvious what’s happening.</p>
+
+<h2 id="the-manual-method">The Manual Method</h2>
+<p>In C++, you can create 8 booleans in a byte by using Bitwise comparisons. So, let’s initialize some options.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">optionOne</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionTwo</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionThree</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionFour</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionFive</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionSix</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionSeven</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionEight</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You may be thinking: “This takes up loads of storage, why would I use this instead of 8 booleans?”. Well, in terms of using a single set of 8, yes it does, however if you’re creating many instances of, for example, an enemy, which all have different possible status effects, this method is much more space-efficient than others. But, we’ll get to that later.</p>
+
+<p>Now that all the options are initialized, you can create a “<code class="language-plaintext highlighter-rouge">char</code>” which we’re really just going to use to store binary data.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">char</span> <span class="n">options</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is where it all comes together. Bitwise comparisons can set specific bits on and off, using the options variables that we just created earlier. So, if you use Bitwise OR:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">options</span> <span class="o">|=</span> <span class="n">option1</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What’s really happening is this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>options: 0000 0000
+option1: 0000 0001
+------------------
+options: 0000 0001
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It compares the two bytes, and if any of the bits are on in either of those bytes, they are turned on in the result. For example, this would be the result of another two random bytes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>byte1: 1010 1100
+byte2: 0001 1110
+----------------
+outpt: 1011 1110
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This means that Bitwise OR can be used to turn our individual “booleans” on. How would you disable them? Another Bitwise operator, Bitwise AND, and the inversion of the option we’re turning off.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>options &amp;= ~option3;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>How it works:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> options: 0000 0100
+~option3: 1111 1011
+-------------------
+ options: 0000 0000
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Bitwise AND only produces an output of 1 on a bit when both bits in both of the input bytes are on. By using the inverse of the option (done by the key symbol tilde), this ensures that all other options that were enabled stay enabled, but the selected one to be deactivated will 100% of the time be turned off. Again, here’s another example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>bool1: 1001 0110
+~bool: 1110 1111
+----------------
+outpt: 1000 0110
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is similar to how a bit mask works, but I’ll follow that up in another post. Finally, to compare whether a bool is on or not, you can simply use a Bitwise &amp; with the normal option to check if it’s + or 0, and then use a static cast to make it a boolean, like so:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="n">option</span> <span class="o">&amp;</span> <span class="n">option4</span><span class="p">))</span> <span class="p">{</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hey, option 4 is on!</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>But there’s a much easier way to do this, that doesn’t require fiddling around with raw binary values. This was more just a way to understand it than how it should actually be implemented. Here’s the real, built-in method, provided by C++’s standard library.</p>
+
+<h2 id="the-stdbitset-method">The std::bitset Method</h2>
+<p>This method requires the use of a library, but is arguably much better. To start, import the bitset library from system.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bitset&gt;</span><span class="cp">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Once this is done, you can use std::bitset<int> to create a new set of bits available for boolean use. There are several key commands that carry out the features of doing this manually, which are all here:</int></p>
+
+<p class="notice">Remember to <code class="language-plaintext highlighter-rouge">include &lt;iostream&gt;</code> if you’re planning to output text like in these examples, and follow good practice by leaving out <code class="language-plaintext highlighter-rouge">using std</code>.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Turns the 8th bit on.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Turns the 8th bit off.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Flips the 8th bit.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Tests if bit 8 is on, returns an int.</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="p">{</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Static casting allows for use in IF blocks.</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>That’s much easier, right? So, now you know the mechanics of how it works, and the bit-level inputs required, go check it out.</p>
+
+<p>Thanks for reading!</p>
+
+        <div class="readmore">
+          <a href="/posts/eight-bools-in-a-byte" role="button">Read more</a>
+        <div>
+
+    
+
+  
+
+
+</article>
+  <!-- Last post does not need a hr -->
+
+  <hr>
+
+
+
+
+
+
+
+<article class="blog">
+
+
+  
+    
+
+
+
+
+
+
+
+
+<style>
+  .wrappers-in-csharp {
+    margin-bottom: 2em;
+  }
+  .wrappers-in-csharp::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .wrappers-in-csharp::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(100,255,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .wrappers-in-csharp-container,
+  .wrappers-in-csharp-container::before,
+  .wrappers-in-csharp-container::after {
+    height: 25rem;
+  }
+
+  .wrappers-in-csharp-bleed-container,
+  .wrappers-in-csharp-bleed-container::before,
+  .wrappers-in-csharp-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .wrappers-in-csharp-container,
+        .wrappers-in-csharp-container::before,
+        .wrappers-in-csharp-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="
+  
+    post-title-container
+      
+        wrappers-in-csharp wrappers-in-csharp-container hero-hov
+      
+    
+  ">
+
+    <!-- Post title -->
+  
+    <div class="heading-container hero-heading hero-heading-blog">
+  
+      <h1>
+        
+          <a href="/posts/wrappers-in-csharp" title="Wrappers in C#, and when not to use them.">Wrappers in C#, and when not to use them.</a>
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="
+      
+        post-meta
+      
+      ">
+
+        <span>26/05/2018</span>
+
+        
+
+        <span>
+          
+              <a href="/tag/nodejs">#nodejs</a>
+          
+        </span>
+      </div>
+
+    
+    </div>
+    
+
+  </div>
+
+  
+
+    
+      <p class="notice-alert">I no longer agree with this article, but am keeping it here as a reminder. As you can tell, I was a bit frustrated. What I do still agree with, though, is the NodeJS dependency stack is absolute hell.</p>
+
+<p>When working on a project recently, I was required to do some networking to communicate between the C#.NET application I was creating, and a remote online server. Sounds pretty easy, right? Well, I’d been thinking about a couple of solutions, when I remembered an easy networking solution called Socket.IO (which you can check out here). Unfortunately, this program was native to NodeJS, and wasn’t available for a C# application, which sucked.</p>
+
+<p>After a little searching, however, I found a C#.NET wrapper for the program, which could be installed by Nuget in VS2015 natively! It’s a great compatibility fixer, and you can find it on Quobject’s Github page <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. So, I set to work creating the client in C#, and the server in NodeJS. The syntax for both of them is remarkably similar, and after some tweaking from the Github example scripts, I managed to get this:</p>
+
+<p><img src="/uploads/wrapperArticleSS.png" alt="pic" /></p>
+
+<p>Obviously the server address is censored, but the logic of the script should still be pretty clear.
+It connects to the server, and then sends an “<code class="language-plaintext highlighter-rouge">isLatestVersion</code>” request to the server, along with the current version number of the program, and waits for a response. When it gets one back, it checks whether the value is false, and if it is, starts the update program.</p>
+
+<p>However, there was a caveat with this system. The windows form that handled the updating used a third party Node package designed for use with Socket.IO, called “delivery”. It was made by primarily the same developers, and based on the newest version, and was labelled as “fully compatible” with C#. This is where the lesson comes in:</p>
+
+<p>Don’t use wrappers if you are going to use third party packages.</p>
+
+<p>It’s one or the other, is the point. Because, as soon as that happened, everything completely exploded <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. Blunt, but true. When using the package, I first noticed that it used an automatically executing asynchronous function, which immediately raised red flags, as C#’s wrapper doesn’t like that at all, from previous testing. When running it, sure enough, it spat out that the variable “window” wasn’t assigned in the async function call, as it was coming from a C# source, which doesn’t have a window property. This kind of left me in a bad place, so I removed the asynchronous function and window variable from the package entirely, and used C#’s native systems instead.</p>
+
+<p>This only created more problems, as the incompatibilities that I couldn’t see before were now unearthed, grisly and disgusting, for all the world to see. First, an error involving the “Delivery()” constructor used in my actual native NodeJS script broke, which was likely due to my meddling with the window function, however was fixed by a thorough crawl through the documentation and package source files, and a quick change in the script from using “var delivery = new Delivery()” to “var delivery = delivery.connect(ip, apic, {reconnect:true/false})”. Much uglier, but still functional. Then, an error surfaced to do with MIME, one of the package’s dependencies, and entirely unrelated to my project. At this point, I was getting a little tired, but soldiered on to try and fix the error.</p>
+
+<p>After some research into the error code I received, it appeared that <strong>another package entirely, Knox,</strong> was causing this error, one of MIME’s dependencies! This is when I learned my lesson. When a third party package is ported over to another language, all it’s dependencies have to be as well. This creates an inconceivable number of errors if they aren’t all properly ported with identical syntax, and digs a very deep rabbit hole from which it’s nearly impossible to crawl out of.</p>
+
+<p>I eventually did fix the cross compatibility issue, but only by contacting the developer via. a pull request and actually changing the code of the package itself to support a lower MIME version with the command! In my opinion, that was more stress than using a more complicated networking solution, but having little errors due to native compatibility.</p>
+
+<p>I’m never using a wrapper and third party tools together ever again.
+Thanks, and adieu.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Do not use this software, it is long outdated now and very deprecated. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Maybe this wasn’t the wording in the original article… <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        <div class="readmore">
+          <a href="/posts/wrappers-in-csharp" role="button">Read more</a>
+        <div>
+
+    
+
+  
+
+
+</article>
+  <!-- Last post does not need a hr -->
+
+  <hr>
+
+
+
+
+
+
+
+<article class="blog">
+
+
+  
+    
+
+
+
+
+
+
+
+
+<style>
+  .the-little-man-computer {
+    margin-bottom: 2em;
+  }
+  .the-little-man-computer::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .the-little-man-computer::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(0,100,255,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .the-little-man-computer-container,
+  .the-little-man-computer-container::before,
+  .the-little-man-computer-container::after {
+    height: 25rem;
+  }
+
+  .the-little-man-computer-bleed-container,
+  .the-little-man-computer-bleed-container::before,
+  .the-little-man-computer-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .the-little-man-computer-container,
+        .the-little-man-computer-container::before,
+        .the-little-man-computer-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="
+  
+    post-title-container
+      
+        the-little-man-computer the-little-man-computer-container hero-hov
+      
+    
+  ">
+
+    <!-- Post title -->
+  
+    <div class="heading-container hero-heading hero-heading-blog">
+  
+      <h1>
+        
+          <a href="/posts/the-little-man-computer" title="The Little Man Computer">The Little Man Computer</a>
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="
+      
+        post-meta
+      
+      ">
+
+        <span>29/03/2018</span>
+
+        
+
+        <span>
+          
+              <a href="/tag/nodejs">#nodejs</a>
+          
+        </span>
+      </div>
+
+    
+    </div>
+    
+
+  </div>
+
+  
+
+    
+      <p>Over the past couple of months, apart from writing my book, “You Suck at Programming” <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, I’ve been working on an emulator/interpreter for the famous computer simulation “Little Man Computer”, by Peter Higginson. It was created many years ago to help students learn about how the CPU and memory worked and interacted with each other, and was a great way for me to try and understand some lower level emulation, as it has an instruction set consisting of just nine operations. These operations are:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>ADD – Addition
+SUB – Subtraction
+DAT – Data Storage
+LDA – Load Data
+STA – Store Data
+HLT – Halt Program
+BIZ – Branch if Zero
+BRA – Branch Always
+BZP – Branch if Zero or Positive
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>They all sounded fairly simple to implement, so I went about creating the first prototypes for the interpreter of this program. Initially, I tried to create a dictionary with 99 data spaces to store my data, however this ended up causing a lot of problems for me down the line. I eventually had to scrap the entire idea, and ended up just using a simple two dimensional array. Now that that was sorted, I needed to somehow get a standard data format including data and addresses, and have an interpreter read them properly. Luckily, Little Man Computer is close enough to a real computer that it uses “opcodes”, small (in this case 3 character) strings which tell you which command is being executed, and at what address. So, the format I came up with looked like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>[[00, 901], [01, 105], [02, 902]]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The 2D array contains in the first position the address of the current memory slot (ascending from 00), and in the second position the opcode of the command. “901” is input, and “902” output, with “1” being addition, and “5” being the address that is added to the accumulator’s current value (which is what the ADD command actually does, but more on the accumulator later). So, by that definition, this program just takes an input, adds the value of address 5 to it, and spits out the answer.</p>
+
+<p>I then realised that I needed some way of storing the value of the accumulator, program counter, and all the other registers within the LMC CPU. So, I just used basic integers. Simple.</p>
+
+<p>The interpreter I wrote has a chain of decoding that it has to complete before it reaches the “execution” part of “fetch, decode, execute”. The fetching has already been done in the form of the two dimensional array, and the decoding is the fun bit. The interpreter loops through each value in the array, checking the memory slot’s second position for the opcode, and one by one executing the commands. If a branch is found to be true, then the interpreter loops through all positions in the two dimensional array until the first position’s value matches the last two characters of the branch (like 804, which would search for address “04” if the value was positive or zero). The code will then continue from that location until a halting operation (HLT).</p>
+
+<p>For this, however, I had to create an essentially entirely new file format called “Little Man Script, or .LMS. I’ve included a compiler in the project that allows you to convert plaintext commands (like “LDA 04” or “STA 99”) into a formatted “.LMS” file which you can run with either the executable file or the raw Javascript.</p>
+
+<p>To see this in action for yourself, and to try writing an assembly script on your own (you can use the provided compiler to convert text files) navigate to my GitHub page by clicking <a href="https://github.com/c272/jLMC">here</a>, and downloading a zip of all the files in the source.</p>
+
+<p>That’s all for now, but I’ll catch up with you soon when the book is nearer to release.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>This book was later renamed to “Programming at Light Speed”. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        <div class="readmore">
+          <a href="/posts/the-little-man-computer" role="button">Read more</a>
+        <div>
+
+    
+
+  
+
+
+</article>
+  <!-- Last post does not need a hr -->
+
+
+
+
+
+
+<nav class="pagination" role="navigation">
+<hr/>
+  <ul>
+    <li class="pagination-item-prev" >
+          
+      <span>&laquo; Previous</span>
+          
+    </li>
+
+
+    <li class="pagination-item-next" >
+          
+      <a rel="next" href="/page-2/">Next &raquo;</a>
+      
+    </li>
+
+  </ul>
+<hr/>
+</nav>
+
+
+
+            <footer>
+    <span>A blog for weird and wonderful programming topics,</span>
+    <span>written by C272</span>
+</footer>
+
+        </div>
+
+        <!-- load theme switcher and barefoot footnotes -->
+
+<script type="text/javascript" src="/assets/js/theme.js"></script>
+
+<script type="text/javascript" src="/assets/js/barefoot.js"></script>
+
+
+        
+    </body>
+</html>

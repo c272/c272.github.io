@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>Postprocessing in SadConsole &#9642; c272</title>
+<!--
+
+<meta name="description" content="An article I wrote for the SadConsole wiki in 2019.
+">
+-->
+
+
+<meta name="description" content="An article I wrote for the SadConsole wiki in 2019.">
+<meta name="keywords" content="csharp">
+<link rel="canonical" href="https://c272.org/posts/postprocessing-in-sadconsole">
+<link rel="shortcut icon" type="image/icon" href="/favicon.ico">
+
+
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Postprocessing in SadConsole" />
+<meta name="twitter:description" content="An article I wrote for the SadConsole wiki in 2019.
+" />
+<meta name="twitter:image" content="https://c272.org" />
+
+<!-- Google plus -->
+<meta name="author" content="">
+<link rel="author" href="">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postprocessing in SadConsole">
+<meta property="og:description" content="An article I wrote for the SadConsole wiki in 2019.
+">
+<meta property="og:url" content="https://c272.org/posts/postprocessing-in-sadconsole">
+<meta property="og:site_name" content="c272">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400italic,700,700italic">
+<style>
+    html {
+      font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/bf.css">
+
+
+    </head>
+
+    <body>
+        <div class="wrapper" id="blep">
+            <header>
+    <div class="menu">
+      <div class="logo">
+
+        <a href="/">c272</a>
+        <object type="image/svg+xml" data="/assets/img/coffeecup.svg" class="logosvg">Your browser does not support svg images</object>
+      </div>
+
+        <ul>
+            <li><a href="/about">about</a></li>
+            <li><a href="/archive">archive</a></li>
+        </ul>
+    </div>
+    <div class="social">
+      <ul>
+        
+        
+        
+        
+        <li>
+            <a href="https://github.com/c272" target="_blank" class="smaller">
+              <span class="icon-github"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="mailto:larry@c272.org" target="_blank">
+              <span class="icon-mail_outline"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="/feed.xml" target="_blank">
+                <span class="icon-rss_feed"></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#" onclick="switchTheme()" title="Switch theme?">
+              <span class="icon-invert_colors" id="theme-switcher"></span>
+            </a>
+        </li>
+      </ul>
+    </div>
+</header>
+
+
+            
+
+<article class="post">
+
+  
+  
+
+
+
+
+
+
+
+
+<style>
+  .postprocessing-in-sadconsole {
+    margin-bottom: 2em;
+  }
+  .postprocessing-in-sadconsole::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .postprocessing-in-sadconsole::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(100,255,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .postprocessing-in-sadconsole-container,
+  .postprocessing-in-sadconsole-container::before,
+  .postprocessing-in-sadconsole-container::after {
+    height: 25rem;
+  }
+
+  .postprocessing-in-sadconsole-bleed-container,
+  .postprocessing-in-sadconsole-bleed-container::before,
+  .postprocessing-in-sadconsole-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .postprocessing-in-sadconsole-container,
+        .postprocessing-in-sadconsole-container::before,
+        .postprocessing-in-sadconsole-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="post-title-container
+  
+  postprocessing-in-sadconsole postprocessing-in-sadconsole-bleed-container bleed-hero-container
+    ">
+    <!--Post hero image source-->
+    
+      
+    
+    <!-- Post title -->
+    <div class="heading-container hero-heading hero-heading-post">
+      <h1>
+        
+          Postprocessing in SadConsole
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="post-meta">
+        <span>27/02/2021</span>
+        <!-- 
+
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    niedziela, 27 luty 2021
+
+ -->
+        <span>
+          
+              <a href="/tag/csharp">#csharp</a>
+          
+        </span>
+      </div>
+    </div>
+  </div>
+
+    <!-- Post content -->
+    <p class="notice">This was originally an article I wrote for the SadConsole wiki in 2019, which I have moved over to this blog. You can find (and use) SadConsole <a href="https://github.com/Thraka/SadConsole">here.</a></p>
+
+<p>Sometimes you may want to apply a shader or graphical effect to your game when drawing, which this article will explain how to do.</p>
+
+<p>To apply a post processing effect to the screen, you can override SadConsole’s default drawing functionality, and then apply your own custom draw commands.</p>
+
+<p>To do this, you attach a new <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> to SadConsole’s game instance components, which is set to draw <em>after</em> SadConsole has finished creating the frame for the default screen.</p>
+
+<p>This <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> should then access SadConsole’s final render surface, and apply whatever custom draw code is needed.</p>
+
+<h2 id="method">Method</h2>
+
+<h3 id="setting-up-the-class">Setting up the Class</h3>
+<p>To begin with, you’ll need to create a new class that inherits from MonoGame’s <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code>, and override the constructor and “Draw” functions so that you can draw to screen.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">public</span> <span class="k">class</span> <span class="nc">MyCustomPPFX</span> <span class="p">:</span> <span class="n">DrawableGameComponent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MyCustomPPFX</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Game</span><span class="p">.</span><span class="n">Instance</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+    <span class="c1">//When we need to draw to the screen, it's done here.</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Draw</span><span class="p">(</span><span class="n">GameTime</span> <span class="n">gameTime</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>After this, you’ll need to have your constructor load in the shader you want to use. This can be done through two methods:</p>
+
+<ol>
+  <li>The MonoGame Content Pipeline</li>
+  <li>2MGFX (Manual Inclusion)</li>
+</ol>
+
+<p>The MonoGame Content Pipeline is arguably easier, however requires you to have the pipeline available for changes.</p>
+
+<h3 id="loading-a-shader">Loading a Shader</h3>
+<p><em>Method 1: MonoGame Content Pipeline</em>
+To load your content via. the MonoGame Content Pipeline, you can create a simple <code class="language-plaintext highlighter-rouge">.mgcb</code> and include the shader as a file. Once this is done, you can set up a content manager and load the shader like so:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">effect</span> <span class="p">=</span> <span class="n">Content</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">Effect</span><span class="p">&gt;</span> <span class="p">(</span><span class="s">"myEffect"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><em>Method 2: 2MGFX and Manual Inclusion</em>
+First, you’ll need to compile your <code class="language-plaintext highlighter-rouge">.fx</code> shader using <em>2MGFX</em>, a free tool included in every MonoGame install. The default location for this is in the MonoGame MSBuild folder, located at <code class="language-plaintext highlighter-rouge">Program Files (x86)\MSBuild\MonoGame\Tools</code>.</p>
+
+<blockquote>
+  <p>Note: Make sure you’re compiling for the correct platform, either DesktopGL or DirectX_11, otherwise your shader will not compile properly, or fail to load.</p>
+</blockquote>
+
+<p>Once this is done, you can include the compiled file as a resource in your assembly, as is done so <a href="https://stackoverflow.com/questions/433171/how-to-embed-a-text-file-in-a-net-assembly">here,</a> and then load the effect from raw bytes, like so:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">Effect</span> <span class="n">myEffect</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyEffect</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="configuring-the-class">Configuring the Class</h3>
+<p>Once you’ve successfully loaded the shader in your constructor, it should look something like this:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1">//Load the shader into memory.</span>
+<span class="n">myShader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyShader</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Now you need to set the draw order of your <code class="language-plaintext highlighter-rouge">DrawableGameComponent</code> to be <strong>6 or higher</strong>, so it draws <em>after</em> SadConsole’s finished doing its rendering.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">//Set the draw order to 6, so we draw AFTER SadConsole.</span>
+<span class="n">DrawOrder</span> <span class="p">=</span> <span class="m">6</span><span class="p">;</span>
+
+<span class="c1">//Load the shader into memory.</span>
+<span class="n">myShader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Effect</span><span class="p">(</span><span class="n">SadConsole</span><span class="p">.</span><span class="n">Global</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">Resources</span><span class="p">.</span><span class="n">MyShader</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>With the <code class="language-plaintext highlighter-rouge">DrawOrder</code> properly set, all that’s left to do is configure the shader’s parameters, and then include the <code class="language-plaintext highlighter-rouge">Draw</code> code. The first step is done on a shader-by-shader basis, however this is what the code looks like in the <a href="https://github.com/SadConsole/SadConsole/blob/master/src/DemoProject/SharedCode/ShaderRendererTesting.cs">SadConsole Shader Example</a>:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Draw</span><span class="p">(</span><span class="n">GameTime</span> <span class="n">gameTime</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">// Respect the draw flag for sadconsole</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">Settings</span><span class="p">.</span><span class="n">DoDraw</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"textureSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"videoSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+		<span class="n">spriteEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"outputSize"</span><span class="p">].</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">.</span><span class="n">Height</span><span class="p">));</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You’ll need to configure any static values for your shader in your constructor after you’ve loaded it, as well. Finally, the <code class="language-plaintext highlighter-rouge">Draw</code> code. First you begin the rendering of the <code class="language-plaintext highlighter-rouge">SpriteBatch</code>, apply your shader, draw the spritebatch, and then end. Here’s an example of that, again from the example:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">Begin</span><span class="p">(</span><span class="n">SpriteSortMode</span><span class="p">.</span><span class="n">Immediate</span><span class="p">,</span> <span class="n">BlendState</span><span class="p">.</span><span class="n">NonPremultiplied</span><span class="p">,</span> <span class="n">SamplerState</span><span class="p">.</span><span class="n">PointClamp</span><span class="p">,</span> <span class="n">DepthStencilState</span><span class="p">.</span><span class="n">DepthRead</span><span class="p">,</span> <span class="n">RasterizerState</span><span class="p">.</span><span class="n">CullNone</span><span class="p">);</span>
+
+<span class="c1">//Apply the shader before draw, but after begin.</span>
+<span class="n">spriteEffect</span><span class="p">.</span><span class="n">CurrentTechnique</span><span class="p">.</span><span class="n">Passes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="nf">Apply</span><span class="p">();</span>
+
+<span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">Draw</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">RenderOutput</span><span class="p">,</span> <span class="n">Global</span><span class="p">.</span><span class="n">RenderRect</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">White</span><span class="p">);</span>
+<span class="n">Global</span><span class="p">.</span><span class="n">SpriteBatch</span><span class="p">.</span><span class="nf">End</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="adding-the-component">Adding the Component</h3>
+
+<p>Now that your custom renderer is completely set up, you can add it as a component to the game instance. Somewhere in your SadConsole initialization code, you can add an instance of your class to the <code class="language-plaintext highlighter-rouge">SadConsole.Game.Instance.Components</code> collection.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">Game</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Components</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">MyCustomPPFX</span><span class="p">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Running the game, your shader should now be applied, permitting your parameters and configuration were correct.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>I’m just seeing a black screen, what should I do?</strong>
+Has the shader been applied between the <code class="language-plaintext highlighter-rouge">Begin</code> and <code class="language-plaintext highlighter-rouge">Draw</code> methods? Is the shader broken?</p>
+
+<p>Another possible issue is the parameters of the shader. Make sure any size or output parameters are set in the <code class="language-plaintext highlighter-rouge">Draw</code> function, and based on SadConsole’s actual dimensions. Also make sure that your static properties are configured properly.</p>
+
+</article>
+
+
+
+
+<aside class="related">
+
+<h2>Related posts</h2>
+<ul class="related-posts">
+
+
+
+
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+
+
+<p>There are no posts related to this one yet. Check back later!</p>
+
+
+
+</aside>
+
+
+
+
+
+            <footer>
+    <span>A blog for weird and wonderful programming topics,</span>
+    <span>written by C272</span>
+</footer>
+
+        </div>
+
+        <!-- load theme switcher and barefoot footnotes -->
+
+<script type="text/javascript" src="/assets/js/theme.js"></script>
+
+<script type="text/javascript" src="/assets/js/barefoot.js"></script>
+
+
+        
+    </body>
+</html>

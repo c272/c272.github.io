@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>Steam Inventories in NodeJS &#9642; c272</title>
+<!--
+
+<meta name="description" content="A footnote on managing inventories using the Steam API.
+">
+-->
+
+
+<meta name="description" content="A footnote on managing inventories using the Steam API.">
+<meta name="keywords" content="nodejs">
+<link rel="canonical" href="https://c272.org/posts/steam-inventories-in-node">
+<link rel="shortcut icon" type="image/icon" href="/favicon.ico">
+
+
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Steam Inventories in NodeJS" />
+<meta name="twitter:description" content="A footnote on managing inventories using the Steam API.
+" />
+<meta name="twitter:image" content="https://c272.org" />
+
+<!-- Google plus -->
+<meta name="author" content="">
+<link rel="author" href="">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Steam Inventories in NodeJS">
+<meta property="og:description" content="A footnote on managing inventories using the Steam API.
+">
+<meta property="og:url" content="https://c272.org/posts/steam-inventories-in-node">
+<meta property="og:site_name" content="c272">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400italic,700,700italic">
+<style>
+    html {
+      font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/bf.css">
+
+
+    </head>
+
+    <body>
+        <div class="wrapper" id="blep">
+            <header>
+    <div class="menu">
+      <div class="logo">
+
+        <a href="/">c272</a>
+        <object type="image/svg+xml" data="/assets/img/coffeecup.svg" class="logosvg">Your browser does not support svg images</object>
+      </div>
+
+        <ul>
+            <li><a href="/about">about</a></li>
+            <li><a href="/archive">archive</a></li>
+        </ul>
+    </div>
+    <div class="social">
+      <ul>
+        
+        
+        
+        
+        <li>
+            <a href="https://github.com/c272" target="_blank" class="smaller">
+              <span class="icon-github"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="mailto:larry@c272.org" target="_blank">
+              <span class="icon-mail_outline"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="/feed.xml" target="_blank">
+                <span class="icon-rss_feed"></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#" onclick="switchTheme()" title="Switch theme?">
+              <span class="icon-invert_colors" id="theme-switcher"></span>
+            </a>
+        </li>
+      </ul>
+    </div>
+</header>
+
+
+            
+
+<article class="post">
+
+  
+  
+
+
+
+
+
+
+
+
+<style>
+  .steam-inventories-in-node {
+    margin-bottom: 2em;
+  }
+  .steam-inventories-in-node::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .steam-inventories-in-node::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(100,0,255,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .steam-inventories-in-node-container,
+  .steam-inventories-in-node-container::before,
+  .steam-inventories-in-node-container::after {
+    height: 25rem;
+  }
+
+  .steam-inventories-in-node-bleed-container,
+  .steam-inventories-in-node-bleed-container::before,
+  .steam-inventories-in-node-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .steam-inventories-in-node-container,
+        .steam-inventories-in-node-container::before,
+        .steam-inventories-in-node-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="post-title-container
+  
+  steam-inventories-in-node steam-inventories-in-node-bleed-container bleed-hero-container
+    ">
+    <!--Post hero image source-->
+    
+      
+    
+    <!-- Post title -->
+    <div class="heading-container hero-heading hero-heading-post">
+      <h1>
+        
+          Steam Inventories in NodeJS
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="post-meta">
+        <span>15/01/2018</span>
+        <!-- 
+
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    wtorek, 15 styczeń 2018
+
+ -->
+        <span>
+          
+              <a href="/tag/nodejs">#nodejs</a>
+          
+        </span>
+      </div>
+    </div>
+  </div>
+
+    <!-- Post content -->
+    <p class="notice-alert">Warning: This article was written in 2018, when the Steam API for inventory management was different.
+The information here may now be outdated or incorrect.</p>
+
+<p>In NodeJS, the closest you’ll get to indexing is using a dictionary with keys as the name of the object, and data as the contents. This is what Dr. McKay employed when he created node-steamcommunity, and is used in the function that allows you to grab the available inventories of a user, called <strong>getUserInventoryContents()</strong>.</p>
+
+<p>This function usually requires you to use an object from the function <code class="language-plaintext highlighter-rouge">getUserInventoryContexts()</code>, which returns an array with multiple objects within, containing all the AppID and context data of the user’s available inventories. These objects are extremely awkward to work with, as the documentation currently is quite vague on the structure of the returned object.</p>
+
+<p>The listed structure is set as such:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>appid{??,??,??}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It mentions that the AppID is the name of the object, however only says that the “context data and game data” is included.</p>
+
+<p>So, when grabbing inventories for a Steam bot, I was running into trouble when trying to get the context ID for app 730, Counter Strike: Global Offensive.</p>
+
+<p>However, I discovered on Dr. McKay’s IPS community forum that the default context ID for all Valve games is 2 <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, however other games are up to the discretion of the developer in terms of setting context ID.</p>
+
+<p>This leaves most common Steam bot developers in a good situation, as most people programming the bots are using Valve games, as was I. However, anyone wanting to use these commands to get an inventory array for say, BattleBlock Theater or Tower Unite, will have to deal with the undocumented mess that the context function spits out.</p>
+
+<p>So, this is a PSA for anyone looking for context IDs: <strong>2 for Valve, and unknown for anything else.</strong></p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The link for this post is sadly lost to time. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+
+<aside class="related">
+
+<h2>Related posts</h2>
+<ul class="related-posts">
+
+
+
+
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+
+
+<p>There are no posts related to this one yet. Check back later!</p>
+
+
+
+</aside>
+
+
+
+
+
+            <footer>
+    <span>A blog for weird and wonderful programming topics,</span>
+    <span>written by C272</span>
+</footer>
+
+        </div>
+
+        <!-- load theme switcher and barefoot footnotes -->
+
+<script type="text/javascript" src="/assets/js/theme.js"></script>
+
+<script type="text/javascript" src="/assets/js/barefoot.js"></script>
+
+
+        
+    </body>
+</html>

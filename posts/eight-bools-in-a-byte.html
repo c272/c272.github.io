@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>8 Bools in a Byte &#9642; c272</title>
+<!--
+
+<meta name="description" content="Efficiently packing booleans to save space I didn’t need to.
+">
+-->
+
+
+<meta name="description" content="Efficiently packing booleans to save space I didn't need to.">
+<meta name="keywords" content="cpp">
+<link rel="canonical" href="https://c272.org/posts/eight-bools-in-a-byte">
+<link rel="shortcut icon" type="image/icon" href="/favicon.ico">
+
+
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="8 Bools in a Byte" />
+<meta name="twitter:description" content="Efficiently packing booleans to save space I didn't need to.
+" />
+<meta name="twitter:image" content="https://c272.org" />
+
+<!-- Google plus -->
+<meta name="author" content="">
+<link rel="author" href="">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8 Bools in a Byte">
+<meta property="og:description" content="Efficiently packing booleans to save space I didn't need to.
+">
+<meta property="og:url" content="https://c272.org/posts/eight-bools-in-a-byte">
+<meta property="og:site_name" content="c272">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/assets/vendor/normalize-css/normalize.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400italic,700,700italic">
+<style>
+    html {
+      font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="/assets/css/bf.css">
+
+
+    </head>
+
+    <body>
+        <div class="wrapper" id="blep">
+            <header>
+    <div class="menu">
+      <div class="logo">
+
+        <a href="/">c272</a>
+        <object type="image/svg+xml" data="/assets/img/coffeecup.svg" class="logosvg">Your browser does not support svg images</object>
+      </div>
+
+        <ul>
+            <li><a href="/about">about</a></li>
+            <li><a href="/archive">archive</a></li>
+        </ul>
+    </div>
+    <div class="social">
+      <ul>
+        
+        
+        
+        
+        <li>
+            <a href="https://github.com/c272" target="_blank" class="smaller">
+              <span class="icon-github"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="mailto:larry@c272.org" target="_blank">
+              <span class="icon-mail_outline"></span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a href="/feed.xml" target="_blank">
+                <span class="icon-rss_feed"></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#" onclick="switchTheme()" title="Switch theme?">
+              <span class="icon-invert_colors" id="theme-switcher"></span>
+            </a>
+        </li>
+      </ul>
+    </div>
+</header>
+
+
+            
+
+<article class="post">
+
+  
+  
+
+
+
+
+
+
+
+
+<style>
+  .eight-bools-in-a-byte {
+    margin-bottom: 2em;
+  }
+  .eight-bools-in-a-byte::before {
+    background-image: url('/assets/img/bitsetbg.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(1) brightness(0.5) contrast(0.5);
+
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+  .eight-bools-in-a-byte::after {
+    content:'';
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(255,100,0,0.8);
+
+    /*mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: hard-light;*/
+    mix-blend-mode: overlay;
+    z-index: -1;
+  }
+
+  .eight-bools-in-a-byte-container,
+  .eight-bools-in-a-byte-container::before,
+  .eight-bools-in-a-byte-container::after {
+    height: 25rem;
+  }
+
+  .eight-bools-in-a-byte-bleed-container,
+  .eight-bools-in-a-byte-bleed-container::before,
+  .eight-bools-in-a-byte-bleed-container::after {
+    height: 35rem;
+  }
+
+    @media (max-width: 48rem) {
+        .eight-bools-in-a-byte-container,
+        .eight-bools-in-a-byte-container::before,
+        .eight-bools-in-a-byte-container::after{
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+  
+
+  <!-- Post title (& hero image) container -->
+  <div class="post-title-container
+  
+  eight-bools-in-a-byte eight-bools-in-a-byte-bleed-container bleed-hero-container
+    ">
+    <!--Post hero image source-->
+    
+      
+    
+    <!-- Post title -->
+    <div class="heading-container hero-heading hero-heading-post">
+      <h1>
+        
+          8 Bools in a Byte
+        
+      </h1>
+    <!-- Post meta -->
+      <div class="post-meta">
+        <span>12/06/2018</span>
+        <!-- 
+
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    środa, 12 czerwiec 2018
+
+ -->
+        <span>
+          
+              <a href="/tag/cpp">#cpp</a>
+          
+        </span>
+      </div>
+    </div>
+  </div>
+
+    <!-- Post content -->
+    <p>Storing booleans is an odd topic for the programming world, specifcally for storage. Typically, the smallest addressable chunk of memory is a byte, or 8 bits. The boolean type, having two states, requires just a single bit. This causes the following dilemma: If I want to store 8 bools, why am I using 8 bytes? That’s 64 bits, 56 more than I actually need to store that amount.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">//What a waste of storage!</span>
+<span class="kt">bool</span> <span class="n">option1</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option2</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option3</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option4</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option5</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option6</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option7</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">option8</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>C++, thankfully, has a way to fix this issue. Namely, through using 1 byte, with each individual bit in said byte being a boolean on it’s own. There are two methods to do this, one being much easier than the other, but I’ll explain both so that it becomes obvious what’s happening.</p>
+
+<h2 id="the-manual-method">The Manual Method</h2>
+<p>In C++, you can create 8 booleans in a byte by using Bitwise comparisons. So, let’s initialize some options.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">optionOne</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionTwo</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionThree</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionFour</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionFive</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionSix</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionSeven</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">optionEight</span> <span class="o">=</span> <span class="mb">0b0000'0001</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You may be thinking: “This takes up loads of storage, why would I use this instead of 8 booleans?”. Well, in terms of using a single set of 8, yes it does, however if you’re creating many instances of, for example, an enemy, which all have different possible status effects, this method is much more space-efficient than others. But, we’ll get to that later.</p>
+
+<p>Now that all the options are initialized, you can create a “<code class="language-plaintext highlighter-rouge">char</code>” which we’re really just going to use to store binary data.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">char</span> <span class="n">options</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is where it all comes together. Bitwise comparisons can set specific bits on and off, using the options variables that we just created earlier. So, if you use Bitwise OR:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">options</span> <span class="o">|=</span> <span class="n">option1</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What’s really happening is this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>options: 0000 0000
+option1: 0000 0001
+------------------
+options: 0000 0001
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It compares the two bytes, and if any of the bits are on in either of those bytes, they are turned on in the result. For example, this would be the result of another two random bytes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>byte1: 1010 1100
+byte2: 0001 1110
+----------------
+outpt: 1011 1110
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This means that Bitwise OR can be used to turn our individual “booleans” on. How would you disable them? Another Bitwise operator, Bitwise AND, and the inversion of the option we’re turning off.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>options &amp;= ~option3;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>How it works:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> options: 0000 0100
+~option3: 1111 1011
+-------------------
+ options: 0000 0000
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Bitwise AND only produces an output of 1 on a bit when both bits in both of the input bytes are on. By using the inverse of the option (done by the key symbol tilde), this ensures that all other options that were enabled stay enabled, but the selected one to be deactivated will 100% of the time be turned off. Again, here’s another example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>bool1: 1001 0110
+~bool: 1110 1111
+----------------
+outpt: 1000 0110
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is similar to how a bit mask works, but I’ll follow that up in another post. Finally, to compare whether a bool is on or not, you can simply use a Bitwise &amp; with the normal option to check if it’s + or 0, and then use a static cast to make it a boolean, like so:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="n">option</span> <span class="o">&amp;</span> <span class="n">option4</span><span class="p">))</span> <span class="p">{</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hey, option 4 is on!</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>But there’s a much easier way to do this, that doesn’t require fiddling around with raw binary values. This was more just a way to understand it than how it should actually be implemented. Here’s the real, built-in method, provided by C++’s standard library.</p>
+
+<h2 id="the-stdbitset-method">The std::bitset Method</h2>
+<p>This method requires the use of a library, but is arguably much better. To start, import the bitset library from system.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bitset&gt;</span><span class="cp">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Once this is done, you can use std::bitset<int> to create a new set of bits available for boolean use. There are several key commands that carry out the features of doing this manually, which are all here:</int></p>
+
+<p class="notice">Remember to <code class="language-plaintext highlighter-rouge">include &lt;iostream&gt;</code> if you’re planning to output text like in these examples, and follow good practice by leaving out <code class="language-plaintext highlighter-rouge">using std</code>.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Turns the 8th bit on.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Turns the 8th bit off.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Flips the 8th bit.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//Tests if bit 8 is on, returns an int.</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="p">{</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Static casting allows for use in IF blocks.</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>That’s much easier, right? So, now you know the mechanics of how it works, and the bit-level inputs required, go check it out.</p>
+
+<p>Thanks for reading!</p>
+
+</article>
+
+
+
+
+<aside class="related">
+
+<h2>Related posts</h2>
+<ul class="related-posts">
+
+
+
+
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+
+
+<p>There are no posts related to this one yet. Check back later!</p>
+
+
+
+</aside>
+
+
+
+
+
+            <footer>
+    <span>A blog for weird and wonderful programming topics,</span>
+    <span>written by C272</span>
+</footer>
+
+        </div>
+
+        <!-- load theme switcher and barefoot footnotes -->
+
+<script type="text/javascript" src="/assets/js/theme.js"></script>
+
+<script type="text/javascript" src="/assets/js/barefoot.js"></script>
+
+
+        
+    </body>
+</html>
